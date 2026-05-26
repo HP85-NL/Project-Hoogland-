@@ -1,0 +1,87 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw Hoogland Outdoor CSV data files"
+    meta:
+      owner: "Harshil Patel"
+    tables:
+      - name: dim_store
+        description: "Store dimension - 55 physical stores + 1 ecommerce"
+        meta:
+          loaded_at_field: null
+        external:
+          location: "../data/raw/dim_store.csv"
+          format: csv
+
+      - name: dim_brand
+        description: "Brand dimension - 12 outdoor brands across 3 tiers"
+        external:
+          location: "../data/raw/dim_brand.csv"
+          format: csv
+
+      - name: dim_product
+        description: "Product dimension - 620 SKUs"
+        external:
+          location: "../data/raw/dim_product.csv"
+          format: csv
+
+      - name: dim_customer
+        description: "Customer dimension - 80K loyalty members"
+        external:
+          location: "../data/raw/dim_customer.csv"
+          format: csv
+
+      - name: dim_date
+        description: "Date dimension - 24 months (2024-2025)"
+        external:
+          location: "../data/raw/dim_date.csv"
+          format: csv
+
+      - name: dim_campaign
+        description: "Campaign dimension - marketing campaigns"
+        external:
+          location: "../data/raw/dim_campaign.csv"
+          format: csv
+
+      - name: ext_weather_daily
+        description: "External weather data - daily by region"
+        external:
+          location: "../data/raw/ext_weather_daily.csv"
+          format: csv
+
+      - name: campaign_sku_mapping
+        description: "Campaign to SKU mapping table"
+        external:
+          location: "../data/raw/campaign_sku_mapping.csv"
+          format: csv
+
+      - name: fact_sales
+        description: "Sales transactions - 3.87M lines"
+        external:
+          location: "../data/raw/fact_sales.csv"
+          format: csv
+
+      - name: fact_inventory_weekly
+        description: "Weekly inventory snapshots by store-SKU"
+        external:
+          location: "../data/raw/fact_inventory_weekly.csv"
+          format: csv
+
+      - name: fact_returns
+        description: "Product returns"
+        external:
+          location: "../data/raw/fact_returns.csv"
+          format: csv
+
+      - name: fact_supply_orders
+        description: "Supplier purchase orders"
+        external:
+          location: "../data/raw/fact_supply_orders.csv"
+          format: csv
+
+      - name: fact_traffic_daily
+        description: "Daily store foot traffic"
+        external:
+          location: "../data/raw/fact_traffic_daily.csv"
+          format: csv

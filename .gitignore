@@ -1,0 +1,15 @@
+﻿venv/
+*.duckdb
+*.duckdb.wal
+*.pbix
+*.csv
+*.mp4
+*.exe
+__pycache__/
+.env
+target/
+dbt_packages/
+logs/
+.user.yml
+data/
+Hoogland_Deck_Final.pptx
