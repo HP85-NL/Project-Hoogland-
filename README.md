@@ -1,4 +1,4 @@
-# Project Hoogland — Commercial Performance Diagnostic
+# Project Hoogland - Commercial Performance Diagnostic
 
 **An end-to-end data analytics engagement for a Dutch outdoor retailer: from raw transactional data to a governed analytics warehouse, a six-page management dashboard, and a hypothesis-driven statistical analysis — with every finding quantified in euros.**
 
