@@ -1,6 +1,6 @@
 # Project Hoogland: Commercial Performance Diagnostic
 
-**An end-to-end data analytics engagement for a Dutch outdoor retailer: from raw transactional data to a governed analytics warehouse, a six-page management dashboard, and a hypothesis-driven statistical analysis — with every finding quantified in euros.**
+**An end-to-end data analytics engagement for a Dutch outdoor retailer: from raw transactional data to a governed analytics warehouse, a six-page management dashboard, and a hypothesis-driven statistical analysis - with every finding quantified in euros.**
 
 <p align="center">
   <img src="https://img.shields.io/badge/dbt-FF694B?style=flat-square&logo=dbt&logoColor=white" />
@@ -14,9 +14,14 @@
 
 ## Business Context
 
-Hoogland is a fictional Dutch outdoor retailer modelled on the Bever/Decathlon archetype — 55 stores across the Netherlands, €379M net revenue, 80K loyalty members, 620 SKUs, and two years of transactional data (2024–2025). The business had no diagnostic capability to understand whether its promotions create or destroy value, which stores are under-allocated, or where working capital is trapped in slow-moving inventory.
+Hoogland is a fictional Dutch outdoor retailer modelled on the A.S.Advanture/ Decathlon archetype. 55 stores across the Netherlands, €379M net revenue for two fiscal years, 80K loyalty members, 620 SKUs, and two years of transactional data (2024–2025).
 
-This project was structured as a **four-week consulting sprint**, delivering a governed data warehouse, an interactive BI layer, and a statistically validated hypothesis portfolio — all designed to surface actionable, euro-quantified recommendations for senior leadership.
+The problem is not the topline, it's what's hiding underneath it. Revenue has grown year on year, but management treats that growth as proof of health. It isn't. Beneath the surface, three structural issues are compounding unchecked:
+Margin leakage without accountability. The promotional calendar runs continuously: uitverkoop, Black Friday, seasonal campaigns - but nobody measures whether these promotions create net value or simply shift demand forward at a lower margin. Revenue goes up; profitability goes down. The business celebrates the first number and ignores the second.
+
+Capital trapped in the wrong places. The product catalogue has expanded over time, but nobody has asked which SKUs actually earn their shelf space. Slow-moving inventory accumulates across 55 stores, tying up working capital that could be reinvested in proven performers. Meanwhile, high-performing stores are under-allocated relative to their potential, while underperformers consume disproportionate resources. No diagnostic infrastructure. Data sits in disconnected CSV files such as sales, inventory, customers, weather, campaigns - with no governed warehouse connecting them. There is no single source of truth. Leadership decisions are based on topline revenue reports and gut feel, because nobody has built the analytical layer that answers: Which promotion actually made money? Which store deserves more investment? Where is capital being wasted?
+
+This project was built to close that gap: a governed data warehouse, an interactive BI layer, and a statistically validated hypothesis portfolio that quantifies every finding in euros.
 
 ---
 
@@ -26,7 +31,7 @@ This project was structured as a **four-week consulting sprint**, delivering a g
 |---|-----------|--------|---------|-----------------|
 | H1 | Promo ROI illusion | Difference-in-Differences | **Confirmed** | **€40.5M** margin destroyed |
 | H2 | Store allocation variance | Revenue-per-sqm analysis | **Confirmed** | **€7.1M** revenue gap |
-| H3 | Channel cannibalization | Pearson correlation | **Rejected** | r = 0.995 — channels are complementary |
+| H3 | Channel cannibalization | Pearson correlation | **Rejected** | r = 0.995 - channels are complementary |
 | H4 | Weather-demand coupling | OLS regression | **Confirmed** | **€1.7M** net weather exposure |
 | H5 | Loyalty asymmetry | RFM / CLV segmentation | **Confirmed** | **17.2×** CLV gap between tiers |
 | H6 | Pareto SKU concentration | Concentration analysis | **Confirmed** | **€116M** trapped in long-tail inventory |
