@@ -10,6 +10,10 @@
   <img src="https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white" />
 </p>
 
+<p align="center">
+  <a href="https://app.powerbi.com/view?r=eyJrIjoiYTg1Yzc5NTktY2M0Ny00NGQ1LWFhMjctZjE1NjI0YzEyODc3IiwidCI6ImM2ZTU0OWIzLTVmNDUtNDAzMi1hYWU5LWQ0MjQ0ZGM1YjJjNCJ9">🔗 Live Dashboard</a>
+</p>
+
 ---
 
 ## Business Context
@@ -96,36 +100,40 @@ graph LR
 
 ## Dashboard
 
-Six Power BI pages, each connected to exactly **one mart** via the MotherDuck DuckDB connector. No cross-table joins — a deliberate architectural constraint that keeps each page self-contained, auditable, and performant.
+## Dashboard
+
+**[View the live dashboard →](https://app.powerbi.com/view?r=eyJrIjoiYTg1Yzc5NTktY2M0Ny00NGQ1LWFhMjctZjE1NjI0YzEyODc3IiwidCI6ImM2ZTU0OWIzLTVmNDUtNDAzMi1hYWU5LWQ0MjQ0ZGM1YjJjNCJ9)**
+
+Six Power BI pages, each connected to exactly **one mart** via the MotherDuck DuckDB connector. No cross-table joins - a deliberate architectural constraint that keeps each page self-contained, auditable, and performant.
 
 A Calendar DAX table (2024–2025) provides TY/LY comparison across all pages with year-slicer interactivity.
 
-### P1 — Commercial Overview
+### P1: Commercial Overview
 <p align="center"><img src="screenshot/Commercial%20overview.png" alt="Commercial Overview dashboard" width="90%" /></p>
 
 Five KPI cards (net revenue, margin %, avg basket, transactions, store count), TY vs LY trend line, revenue by region, revenue by archetype, and top 10 stores ranked by net revenue.
 
-### P2 — Store Performance
+### P2: Store Performance
 <p align="center"><img src="screenshot/Store%20Performance.png" alt="Store Performance dashboard" width="90%" /></p>
 
 Revenue-per-sqm benchmarking across 55 stores. Identifies the €7.1M allocation gap between top and bottom quartile performers, broken down by region and archetype.
 
-### P3 — Promo Effectiveness
+### P3: Promo Effectiveness
 <p align="center"><img src="screenshot/Promo%20Effective.png" alt="Promo Effectiveness dashboard" width="90%" /></p>
 
 Campaign-level margin analysis across all promotion types. Surfaces the €40.5M margin destruction finding and compares discount depth against incremental volume.
 
-### P4 — Customer CLV
+### P4: Customer CLV
 <p align="center"><img src="screenshot/Customer%20CLV.png" alt="Customer CLV dashboard" width="90%" /></p>
 
 RFM segmentation and CLV distribution across 80K loyalty members. Visualises the 17.2× gap between top-tier and bottom-tier customer lifetime value.
 
-### P5 — Inventory Health
+### P5: Inventory Health
 <p align="center"><img src="screenshot/Inventory%20Health.png" alt="Inventory Health dashboard" width="90%" /></p>
 
 Weeks-of-cover heatmap by store and category. Flags stockout risk and overstock positions, quantifying the €116M trapped in long-tail SKUs.
 
-### P6 — Weather Demand
+### P6: Weather Demand
 <p align="center"><img src="screenshot/Weather%20Demand%20.png" alt="Weather Demand dashboard" width="90%" /></p>
 
 Temperature-band revenue analysis with precipitation overlay. Maps the €1.7M net weather exposure across weather-sensitive categories.
@@ -136,41 +144,41 @@ Temperature-band revenue analysis with precipitation overlay. Maps the €1.7M n
 
 Full methodology and results are in the [EDA notebook](hoogland.ipynb). Each hypothesis follows a structured consulting template: claim → method → statistical test → euro quantification → recommendation.
 
-### H1 — Promo ROI Illusion (Confirmed)
+### H1: Promo ROI Illusion (Confirmed)
 **Claim:** Promotions appear to drive volume but destroy margin on a net basis.
 **Method:** Difference-in-Differences comparing promoted vs non-promoted periods, controlling for seasonality and store effects.
 **Result:** Promotions generated incremental volume but at discount depths that exceeded the margin on those units. Net margin destruction: **€40.5M**.
-**Recommendation:** Restructure promotional calendar — shift from blanket discounts to targeted, margin-accretive campaigns.
+**Recommendation:** Restructure promotional calendar - shift from blanket discounts to targeted, margin-accretive campaigns.
 
-### H2 — Store Allocation Variance (Confirmed)
+### H2: Store Allocation Variance (Confirmed)
 **Claim:** Significant revenue-per-sqm variance across the store network indicates misallocation of floor space or inventory.
 **Method:** Revenue-per-sqm benchmarking across 55 stores, segmented by archetype and region.
 **Result:** Top-quartile stores generate substantially more per square metre than bottom-quartile. Closing the gap represents a **€7.1M** revenue opportunity.
 **Recommendation:** Reallocate inventory and floor space from underperforming formats to proven archetypes.
 
-### H3 — Channel Cannibalization (Rejected)
+### H3: Channel Cannibalization (Rejected)
 **Claim:** Online growth cannibalises physical store revenue.
 **Method:** Pearson correlation between online and offline revenue at the store-catchment level.
-**Result:** r = **0.995** — near-perfect positive correlation. Channels are complementary, not substitutive.
+**Result:** r = **0.995** - near-perfect positive correlation. Channels are complementary, not substitutive.
 **Recommendation:** Invest in omnichannel integration rather than treating channels as competitors.
 
-### H4 — Weather-Demand Coupling (Confirmed)
+### H4: Weather-Demand Coupling (Confirmed)
 **Claim:** Revenue in weather-sensitive categories fluctuates materially with temperature and precipitation.
 **Method:** OLS regression with temperature bands, precipitation, and monthly anomaly as predictors.
 **Result:** Weather explains significant variance in category-level demand. Net annual exposure: **€1.7M**.
 **Recommendation:** Integrate weather forecasting into replenishment planning for sensitive categories.
 
-### H5 — Loyalty Asymmetry (Confirmed)
+### H5: Loyalty Asymmetry (Confirmed)
 **Claim:** A small segment of loyalty members drives disproportionate value.
 **Method:** RFM scoring and CLV computation across 80K members.
 **Result:** Top-tier members have **17.2×** higher CLV than bottom-tier. The loyalty programme does not differentiate service or incentives accordingly.
-**Recommendation:** Introduce tiered loyalty mechanics — personalised offers, early access, and retention interventions for high-CLV members at risk of churn.
+**Recommendation:** Introduce tiered loyalty mechanics - personalised offers, early access, and retention interventions for high-CLV members at risk of churn.
 
-### H6 — Pareto SKU Concentration (Confirmed)
+### H6: Pareto SKU Concentration (Confirmed)
 **Claim:** A long tail of low-velocity SKUs traps working capital without contributing meaningful revenue.
 **Method:** SKU-level revenue concentration analysis (Pareto/80-20).
 **Result:** **€116M** in inventory value is held in SKUs that contribute minimally to revenue. Classic long-tail capital trap.
-**Recommendation:** Rationalise the assortment — exit or markdown long-tail SKUs, reinvest freed capital into proven performers.
+**Recommendation:** Rationalise the assortment - exit or markdown long-tail SKUs, reinvest freed capital into proven performers.
 
 ---
 
@@ -204,11 +212,11 @@ Project-Hoogland-/
 
 | Decision | Choice | Rationale |
 |----------|--------|-----------|
-| Database | DuckDB (single file, 165 MB) | Zero infrastructure cost. Embeddable. Runs identically on any analyst's laptop — no server provisioning, no cloud spend for a diagnostic engagement. |
+| Database | DuckDB (single file, 165 MB) | Zero infrastructure cost. Embeddable. Runs identically on any analyst's laptop - no server provisioning, no cloud spend for a diagnostic engagement. |
 | Transformation | dbt-core + dbt-duckdb | Industry-standard transformation framework. Version-controlled SQL, built-in testing, automatic documentation. The same tooling a candidate would use at scale with Snowflake or BigQuery. |
 | Three-layer architecture | staging → intermediate → marts | Separation of concerns. Staging handles ingestion contracts, intermediate owns business logic, marts serve consumers. Changes propagate cleanly. |
 | One mart per dashboard page | Hard constraint | Eliminates cross-table joins in Power BI, prevents fan-trap and chasm-trap issues, and makes each page independently testable and auditable. |
-| Python over Excel for EDA | scipy, statsmodels, pandas | Reproducible, version-controlled, peer-reviewable. Statistical tests (DiD, OLS, Pearson) require proper libraries — Excel cannot provide p-values or confidence intervals at this rigour. |
+| Python over Excel for EDA | scipy, statsmodels, pandas | Reproducible, version-controlled, peer-reviewable. Statistical tests (DiD, OLS, Pearson) require proper libraries - Excel cannot provide p-values or confidence intervals at this rigour. |
 | Euro quantification | Every finding has a € number | Consulting standard. A finding without a business impact number is an observation, not a recommendation. Decision-makers need magnitude to prioritise. |
 
 ---
@@ -217,7 +225,7 @@ Project-Hoogland-/
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
-| Warehouse | DuckDB 0.10+ | Analytical database — single file, columnar, fast |
+| Warehouse | DuckDB 0.10+ | Analytical database - single file, columnar, fast |
 | Transformation | dbt-core + dbt-duckdb | SQL-based transformation framework |
 | BI connector | MotherDuck `.mez` | Connects Power BI Desktop to DuckDB |
 | Dashboard | Power BI Desktop | 6-page interactive dashboard with TY/LY measures |
@@ -303,7 +311,7 @@ jupyter notebook hoogland.ipynb
 
 ## About This Project
 
-I have worked in the Dutch outdoor retail sector for over four years in different commercial and operational capacities. This domain knowledge, combined with an MBA specialisation in Data Analytics at Wittenborg University of Applied Sciences and hands-on freelance experience in the Netherlands data landscape, drove me to build this project — not as an academic exercise, but out of genuine curiosity about what the data in this industry actually reveals when you apply rigour to it.
+I have been working in the Dutch outdoor retail sector for over four years in different commercial and operational capacities. This domain knowledge, combined with an MBA specialisation in Data Analytics at Wittenborg University of Applied Sciences and hands-on freelance experience in the Netherlands data landscape, drove me to build this project. It is not as an academic exercise, but out of genuine curiosity about what the data in this industry actually reveals when you apply rigour to it.
 
 The engagement mirrors the delivery standards expected by firms such as KPMG, EY, and BCG, and by in-house analytics teams at organisations like Booking.com, ING, ASML, and Ahold Delhaize.
 
@@ -311,5 +319,5 @@ The engagement mirrors the delivery standards expected by firms such as KPMG, EY
 
 <p align="center">
   <strong>Harshil Patel</strong><br>
-  <a href="https://www.linkedin.com/in/yourprofile">LinkedIn</a> · <a href="https://github.com/HP85-NL">GitHub</a>
+  <a href="https://www.linkedin.com/in/harshil-patel-188b2274/">LinkedIn</a> · <a href="https://github.com/HP85-NL">GitHub</a>
 </p>
